@@ -1,8 +1,14 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# Path to your Oh My Zsh installation.
+# Path to your Oh My Zsh installation. Oh My Zsh itself stays a plain upstream
+# clone in $HOME -- it is not tracked by this dotfiles repo. Only the pieces
+# below ($ZSH_CUSTOM) live in git.
 export ZSH="$HOME/.oh-my-zsh"
+
+# This file is symlinked to ~/.zshrc; resolve it to find the dotfiles repo it
+# lives in, so the repo can be cloned anywhere.
+export DOTFILES="${${(%):-%N}:A:h}"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -63,7 +69,8 @@ ZSH_THEME="agnoster" # set by `omz`
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+# Point Oh My Zsh at the version-controlled custom layer in the dotfiles repo.
+export ZSH_CUSTOM="$DOTFILES/custom"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
